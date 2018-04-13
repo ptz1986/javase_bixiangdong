@@ -54,6 +54,11 @@ set classpath=.;c:\myclass
 
 如果要临时变更，可以这样 set classpath=.;%classpath%
 
+如果报错说找不到 main，那么一般有以下几种可能：
+1. main 可能写成 mian了
+2. 本文件夹下面的文件名错误
+3. classpath 定义的文件夹下面没有源文件
+
 ** 源文件和类文件同名
 还有最好源文件和类文件同名。如果 class Demo 前面添加了 public ，那么源
 文件和类文件必须同名，否则就会报错。

@@ -1,0 +1,73 @@
+* 03
+文档注释，用于说明源代码的作用，用于生成说明书，可以通过 javadoc.exe 来
+自动导出
+/**
+文档注释。
+*/
+
+* 04
+开头没有思路的时候，可以用注释先写出想法：
+/*
+需求：
+思路：
+步骤：
+*/
+
+* 05
+null 常量就是 null 不用大写。
+
+* 08
+负数是正数取反+1
+
+* 09
+变量的作用范围是 一对{}之间。
+
+* 11
+byte b = 3; b = b + 4; 会提示错误：
+VarDemo.java:5: error: incompatible types: possible lossy conversion from int to byte
+		b = b + 4;
+		      ^
+1 error
+
+因为运算的时候右边的数值会进行自动的类型提升。b 是一个字节，4 在32位系
+统里面默认的是4个字节的 int，所以 b 被类型提升了，然后计算后还要放回b
+里面，所以就报错了。
+如果想要不报错，那么可以这样：
+b += 4; 或者 b = (byte)(b + 4);
+
+* 12
+System.out.println('a');	输出 a
+System.out.println('a' + 1);	输出 98
+System.out.println((char)('a' + 1));	输出 b
+因为 'a'是字符型，而1是int类型，所以自动类型提升了。
+
+* 13
+byte b = 4;
+byte b1 = 3;
+byte b2 = 7;
+b = b1 + b2;
+报错：
+VarDemo2.java:7: error: incompatible types: possible lossy conversion from int to byte
+		b = b1 + b2;
+		       ^
+1 error
+
+原因是 b1 + b2 计算的时候， b1, b2 都被提升为 int 类型了，所以报错。而
+在定义的时候，因为 4，3,7 这些都是常量，数值在 byte 范围之内，所以定义
+的时候不会报错。 同样，如果 b = 3 + 7; 这样右边都是常量，结果是 10,在
+byte范围之内，所以同样不会报错。
+
+* 14
+符号 + 如果两边有字符串，那么这个符号就表示字符串连接，比如：
+System.out.println(3 + "2");	结果就是 32
+a = 5, b = 4;
+System.out.println("a="+ a +"b=" + b); 结果 a=5b=4
+
+* 15
+int i = 3;
+i = i++;
+结果 i = 3, 因为会产生一个中间变量用于保存 i的数值，用于++之后返回给i;
+
+=, +=, -= 等等都是赋值运算符， a += 4, 这个里面的 += 右边是常量，如果
+左边是比 int 类型小的，那么 += 会内部做强制转换，不会提示丢失精度。
+

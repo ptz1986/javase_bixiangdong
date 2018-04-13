@@ -1,0 +1,5 @@
+* 08
+java win 环境变量可以使用变量替换比如：
+JAVA_HOME=d:\jdk\jdk1.6.0_31
+path=%JAVA_HOME%\bin;
+这个以后修改的话，只需要修改 JAVA_HOME 即可

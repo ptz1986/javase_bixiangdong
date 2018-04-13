@@ -3,3 +3,61 @@ java win 环境变量可以使用变量替换比如：
 JAVA_HOME=d:\jdk\jdk1.6.0_31
 path=%JAVA_HOME%\bin;
 这个以后修改的话，只需要修改 JAVA_HOME 即可
+
+* 09
+java win 临时环境变量，在命令行环境下：
+set path 查询 path 环境变量
+set path=xxx 设置path环境变量
+set path= 删除环境变量
+set path=xxx;%path% 增加环境变量
+
+* 10
+** 编译
+java 代码写在 xxx.java中，类名为 class yyy{},使用 javac xxx.java 进行
+编译，编译出来的文件是 yyy.class
+使用 java yyy 来运行这个 class 文件，注意不要后缀名，因为java只能执行
+class文件。
+
+** 这时候出现了第一个报错：
+Error: Main method not found in class Demo, please define the main method as:
+   public static void main(String[] args)
+or a JavaFX application class must extend javafx.application.Application
+
+这时候只要在里面添加 public static void main(String[] args){} 这个函数
+即可，重新编译，执行，就没有错误了。
+
+** 输出语句：
+System.out.println("hello world"); 输出结束换行
+System.out.print("hello world"); 输出结束不换行
+
+* 11
+javac 是语法错误检查，比如我去掉一个分号，那么 javac 能检查出一个错误：
+hello.java:5: error: ';' expected
+		System.out.println("hello world")
+		                                 ^
+1 error
+
+* 13
+** 设置类文件夹环境变量
+java 如果需要执行其他文件夹下面的 class 文件，可以这样设置环境变量：
+set classpath=c:\myclass
+这样就可以直接执行 myclass 文件下面的类文件，而不需要切换到相应文件夹。
+
+一旦设置了 classpath，那么就执行 classpath 下面的 class 文件，而不管本
+文件夹下面有没有相应的 class 文件。
+
+如果设置的是这样： set classpath=c:\myclass; 多了一个分号的作用是如果
+在classpath 下面没有文件，就去本文件夹下面去找。
+
+正常后面不应该加分号，否则容易找到不是想要的文件。也可以显式的表示：
+set classpath=.;c:\myclass
+
+如果要临时变更，可以这样 set classpath=.;%classpath%
+
+** 源文件和类文件同名
+还有最好源文件和类文件同名。如果 class Demo 前面添加了 public ，那么源
+文件和类文件必须同名，否则就会报错。
+hello.java:1: error: class Demo is public, should be declared in a file named Demo.java
+public class Demo
+       ^
+1 error

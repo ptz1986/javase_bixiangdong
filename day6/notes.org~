@@ -1,0 +1,7 @@
+* 01 two dimensional arrays
+定义二维数组的格式有两种：
+int[][] arr = new int[3][2];
+int[][] arr = new int[3][];
+arr[0] = new int[3];
+arr[1] = new int[1];
+arr[2] = new int[2];

@@ -1,0 +1,36 @@
+* 16 function overload
+重载和返回类型无关，只看参数列表。
+
+* 18 array
+数组定义几种方法：
+int[] arr = new int[5];
+int[] arr = new int[]{3, 4, 5, 6};
+int[] arr = {3, 4, 5, 6};
+
+* 20 memory
+内存划分：
+1. 寄存器：CPU里面的。
+2. 本地方法区：本地系统平台决定的
+3. 方法区
+4. 栈内存：存储的是局部变量，变量作用域一旦结束，就释放。
+5. 堆内存：数组和对象这些凡是用 new 建立的。有以下几种特点：每一个实体
+   都有首地址值; 堆内存中的每一个变量都有默认初始化数值，根据类型不同
+   而不同，整数是0,小数是0.0,或者0.0f，boolean是false，char是\u0000;
+   还有垃圾回收机制。
+
+* 24 array problem
+数组注意不要越界。越界会报运行时异常：
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 3
+	at ArrayDemo2.main(ArrayDemo2.java:5)
+
+如果数组指向了 null，之后再调用数组，也会发生运行时异常。
+Exception in thread "main" java.lang.NullPointerException
+	at ArrayDemo2.main(ArrayDemo2.java:7)
+
+如果直接打印数组名称，输出的是一个特殊的数值：
+System.out.println(arr);
+输出数值是： [I@2a139a55
+@后面的数值表示的是 windows 系统中这个内存所在的地址经过 hash 算法以后
+的数值，@前面的数值，第一个 [ 表示这个对象是个数组，第二个 I 表示的是
+这是个 int 类型。一般情况下不这样用，可能测试的时候会用到，用来查看某
+个对象具体是什么类型的。
